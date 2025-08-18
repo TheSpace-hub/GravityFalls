@@ -1,0 +1,3 @@
+no-perms: '&cТебе нужно право &ngravity.change&c!'
+gravity-changed: '&aГравитация в мире {world} изменена на {new_value}.'
+use: "Используй /gravity <число> [мир] для изменения игравитации."
