@@ -60,6 +60,7 @@ public class Gravity implements CommandExecutor, TabExecutor {
         World world;
         if (!strings[0].matches("\\d+")) return null;
         int value = Integer.parseInt(strings[0]);
+        if (value > 10) return null;
 
         if (sender instanceof Player && strings.length == 1)
             world = ((Player) sender).getWorld();
