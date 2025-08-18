@@ -1,4 +1,4 @@
-no-perms: '&cТебе нужно право &ngravity.change&c!'
+no-perms: '&cТебе нужно право gravity.change!'
 gravity-changed: '&aГравитация в мире {world} изменена на {new_value}.'
-use: "Используй /gravity <число> [мир] для изменения игравитации."
+use: "&cИспользуй /gravity <число от 0 до 10> [мир] для изменения гравитации."
 worlds: { }
