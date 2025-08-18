@@ -1,6 +1,7 @@
 package hub.thespace.gravityfalls.executors;
 
 import org.bukkit.World;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.Plugin;
 
 public class GravityExecutor {
@@ -14,11 +15,13 @@ public class GravityExecutor {
     /**
      * Изменяет гравитацию в выбранном мире.
      *
-     * @param world   Мир.
-     * @param gravity Целое положительное число от 0 до 10.
+     * @param world Мир.
+     * @param value Целое положительное число от 0 до 10.
      */
-    public void changeGravity(int gravity, World world) {
-        plugin.getLogger().info("Изменение гравитации на " + gravity + " // " + world);
+    public void changeGravity(int value, World world) {
+        ConfigurationSection worlds = plugin.getConfig().getConfigurationSection("worlds");
+        worlds.set(world.getName(), value);
+        plugin.saveConfig();
     }
 
 }
