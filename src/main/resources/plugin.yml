@@ -1,0 +1,5 @@
+name: GravityFalls
+version: '${version}'
+main: hub.thespace.gravityfalls.GravityFalls
+loadbefore: [ProtocolLib]
+depend: [ProtocolLib]
