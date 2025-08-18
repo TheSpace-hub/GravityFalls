@@ -2,19 +2,14 @@ package hub.thespace.gravityfalls.executors;
 
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class GravityExecutor {
 
     private final Plugin plugin;
-    private final Map<Entity, Double> velocities = new HashMap<>();
 
     public GravityExecutor(Plugin plugin) {
         this.plugin = plugin;
@@ -52,5 +47,26 @@ public class GravityExecutor {
                     PotionEffectType.LEVITATION,
                     1000000, -gravity, false, false));
         }
+    }
+
+    /**
+     * Обновить отдельное существо.
+     *
+     * @param entity Существо.
+     */
+    public void updateEntity(LivingEntity entity) {
+        ConfigurationSection worlds = plugin.getConfig().getConfigurationSection("worlds");
+        World world = entity.getWorld();
+        int gravity = worlds.getInt(world.getName()) + 1;
+
+        entity.removePotionEffect(PotionEffectType.LEVITATION);
+        entity.removePotionEffect(PotionEffectType.JUMP);
+        entity.addPotionEffect(new PotionEffect(
+                PotionEffectType.JUMP,
+                1000000, Math.max(0, 4 - gravity), false, false));
+        entity.addPotionEffect(new PotionEffect(
+                PotionEffectType.LEVITATION,
+                1000000, -gravity, false, false));
+
     }
 }
