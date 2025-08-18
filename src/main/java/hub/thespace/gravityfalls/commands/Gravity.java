@@ -1,5 +1,6 @@
 package hub.thespace.gravityfalls.commands;
 
+import hub.thespace.gravityfalls.executors.GravityExecutor;
 import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -13,9 +14,11 @@ import java.util.List;
 public class Gravity implements CommandExecutor, TabExecutor {
 
     private final Plugin plugin;
+    private final GravityExecutor gravityExecutor;
 
     public Gravity(Plugin plugin) {
         this.plugin = plugin;
+        gravityExecutor = new GravityExecutor(plugin);
     }
 
     @Override
@@ -31,15 +34,8 @@ public class Gravity implements CommandExecutor, TabExecutor {
             return true;
         }
 
-        plugin.getLogger().info("I: " + arguments.getLeft() + ", W: " + arguments.getRight());
+        gravityExecutor.changeGravity(arguments.getLeft(), arguments.getRight());
 
-//        Player player = (Player) commandSender;
-//        player.addPotionEffect(new PotionEffect(
-//                PotionEffectType.LEVITATION,
-//                1000000,
-//                Integer.parseInt(strings[0])
-//        ));
-//        plugin.getLogger().info("Set gravity level" + strings[0]);
         return false;
     }
 
@@ -49,13 +45,20 @@ public class Gravity implements CommandExecutor, TabExecutor {
         return List.of();
     }
 
+    /**
+     * Конвертирует аргументы в значения int и World.
+     *
+     * @param sender  Исполнитель команды.
+     * @param strings Переданные аргументы.
+     * @return Пара из гравитации и мира.
+     */
     @Nullable
     private Pair<Integer, World> getArguments(CommandSender sender, String[] strings) {
         if (1 > strings.length || strings.length > 2) return null;
         if (sender instanceof ConsoleCommandSender && strings.length == 1) return null;
 
         World world;
-        if (!strings[0].matches("-?\\d+")) return null;
+        if (!strings[0].matches("\\d+")) return null;
         int value = Integer.parseInt(strings[0]);
 
         if (sender instanceof Player && strings.length == 1)
