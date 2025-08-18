@@ -36,6 +36,11 @@ public class Gravity implements CommandExecutor, TabExecutor {
 
         gravityExecutor.changeGravity(arguments.getLeft(), arguments.getRight());
 
+        commandSender.sendMessage(plugin.getConfig().getString("gravity-changed")
+                .replace("{world}", arguments.getRight().getName())
+                .replace("{new_value}", arguments.getLeft().toString())
+                .replace("&", "§"));
+
         return false;
     }
 
@@ -64,8 +69,10 @@ public class Gravity implements CommandExecutor, TabExecutor {
 
         if (sender instanceof Player && strings.length == 1)
             world = ((Player) sender).getWorld();
-        else
+        else {
             world = Bukkit.getWorld(strings[1]);
+            if (world == null) return null;
+        }
 
         return Pair.of(value, world);
     }
