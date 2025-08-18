@@ -31,3 +31,10 @@ jobs:
         with:
           name: GravityFalls
           path: build/libs/*.jar
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: build/libs/*.jar
+          draft: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
