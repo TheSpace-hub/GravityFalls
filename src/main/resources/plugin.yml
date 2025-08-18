@@ -1,5 +1,10 @@
 name: GravityFalls
 version: '${version}'
 main: hub.thespace.gravityfalls.GravityFalls
-loadbefore: [ProtocolLib]
-depend: [ProtocolLib]
+loadbefore: [ ProtocolLib ]
+depend: [ ProtocolLib ]
+commands:
+  gravity:
+    description: Изменяет гравитацию в мире.
+    usage: "/gravity <value> <world>"
+    permission: gravity.change
