@@ -1,10 +1,10 @@
 # Gravity Falls
 
-![License](https://img.shields.io/github/license/TheSpace-hub/GravityFalls?style=flat-square)
-![License](https://img.shields.io/github/actions/workflow/status/TheSpace-hub/GravityFalls/build.yml?style=flat-square&label=Build)
-![License](https://img.shields.io/github/license/TheSpace-hub/GravityFalls?style=flat-square)
+<a href="https://github.com/TheSpace-hub/GravityFalls/releases"><img src="https://img.shields.io/github/v/release/TheSpace-hub/GravityFalls?style=flat-square" alt="Последний Релиз"></a>
+<a href="https://github.com/TheSpace-hub/GravityFalls/actions"><img src="https://img.shields.io/github/actions/workflow/status/TheSpace-hub/GravityFalls/build.yml?style=flat-square&label=Build" alt="Статус Билда"></a>
+<a href="https://github.com/TheSpace-hub/GravityFalls?tab=MIT-1-ov-file"><img src="https://img.shields.io/github/license/TheSpace-hub/GravityFalls?style=flat-square" alt="License"></a>
 
-Плагин изменяет гравитацию в мирах Minecraft.
+Плагин изменяет гравитацию в мирах Minecraft, как для игроков, так и для всех живых сущностей.
 
 ## Как использовать?
 
