@@ -10,6 +10,8 @@ import org.bukkit.plugin.Plugin;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Gravity implements CommandExecutor, TabExecutor {
 
@@ -46,7 +48,13 @@ public class Gravity implements CommandExecutor, TabExecutor {
 
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
-
+        if (commandSender.hasPermission("gravity.change"))
+            switch (strings.length) {
+                case 1: return List.of("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
+                case 2: return Bukkit.getWorlds().stream()
+                        .map(world -> world.getName())
+                        .collect(Collectors.toList());
+            }
         return List.of();
     }
 
