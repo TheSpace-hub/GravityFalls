@@ -1,5 +1,6 @@
 package hub.thespace.gravityfalls.commands;
 
+import hub.thespace.gravityfalls.executors.GravityExecutor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -10,10 +11,12 @@ import java.util.List;
 
 public class GravityReload implements CommandExecutor, TabExecutor {
 
-    private Plugin plugin;
+    private final Plugin plugin;
+    private final GravityExecutor gravityExecutor;
 
-    public GravityReload(Plugin plugin) {
+    public GravityReload(Plugin plugin, GravityExecutor gravityExecutor) {
         this.plugin = plugin;
+        this.gravityExecutor = gravityExecutor;
     }
 
     @Override
@@ -31,6 +34,7 @@ public class GravityReload implements CommandExecutor, TabExecutor {
         }
 
         plugin.reloadConfig();
+        gravityExecutor.updateAllWorlds();
 
         commandSender.sendMessage(plugin.getConfig().getString("messages.gravity-reloaded")
                 .replace("&", "§"));
