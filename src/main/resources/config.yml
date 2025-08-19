@@ -5,4 +5,5 @@ messages:
   gravity-reloaded: '&aКонфиг перезагружен.'
   use-change: "&cИспользуй /gravity <сила от 0 до 10> [мир] для изменения гравитации."
   use-reload: "&cИспользуй /gravity-reload для перезагрузки."
+  config-error: '&cНедопустимое значение {value} для мира {world} в config.yml!'
 worlds: { }
