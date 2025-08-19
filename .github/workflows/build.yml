@@ -23,11 +23,12 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build with Gradle
-        run: |
-          ./gradlew -Pmcversion=1.12.2 build
-          ./gradlew -Pmcversion=1.16.5 build
-          ./gradlew -Pmcversion=1.18.2 build
+      - name: Build 1.12.2 with Gradle
+        run: ./gradlew -Pmcversion=1.12.2 build
+      - name: Build 1.16.5 with Gradle
+        run: ./gradlew -Pmcversion=1.16.5 build
+      - name: Build 1.18.2 with Gradle
+        run: ./gradlew -Pmcversion=1.18.2 build
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
