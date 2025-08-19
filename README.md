@@ -1,6 +1,8 @@
 # Gravity Falls
 
 ![License](https://img.shields.io/github/license/TheSpace-hub/GravityFalls?style=flat-square)
+![License](https://img.shields.io/github/actions/workflow/status/TheSpace-hub/GravityFalls/build.yml?style=flat-square&label=Build)
+![License](https://img.shields.io/github/license/TheSpace-hub/GravityFalls?style=flat-square)
 
 Плагин изменяет гравитацию в мирах Minecraft.
 
