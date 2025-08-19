@@ -17,6 +17,7 @@ public final class GravityFalls extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new MainListenerHandler(this, gravityExecutor), this);
 
         Bukkit.getScheduler().runTaskTimer(this, gravityExecutor, 1, 1);
+        gravityExecutor.updateAllWorlds();
     }
 
 }

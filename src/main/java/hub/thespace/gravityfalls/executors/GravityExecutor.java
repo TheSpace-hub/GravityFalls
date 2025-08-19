@@ -1,5 +1,6 @@
 package hub.thespace.gravityfalls.executors;
 
+import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.LivingEntity;
@@ -54,6 +55,14 @@ public class GravityExecutor implements Runnable {
         entitiesReadyToBeProcessed.clear();
         entitiesReadyToBeProcessed.addAll(entitiesAwaitingProcessing);
         entitiesAwaitingProcessing.clear();
+    }
+
+    /**
+     * Обновление всех миров.
+     */
+    public void updateAllWorlds() {
+        for (World world : Bukkit.getWorlds())
+            updateWorld(world);
     }
 
     /**
