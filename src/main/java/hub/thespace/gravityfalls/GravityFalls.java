@@ -2,6 +2,7 @@ package hub.thespace.gravityfalls;
 
 import hub.thespace.gravityfalls.commands.Gravity;
 import hub.thespace.gravityfalls.commands.GravityReload;
+import hub.thespace.gravityfalls.commands.GravityShow;
 import hub.thespace.gravityfalls.executors.GravityExecutor;
 import hub.thespace.gravityfalls.listeners.MainListenerHandler;
 import org.bukkit.Bukkit;
@@ -18,6 +19,7 @@ public final class GravityFalls extends JavaPlugin {
 
         Bukkit.getPluginCommand("gravity").setExecutor(new Gravity(this, gravityExecutor));
         Bukkit.getPluginCommand("gravity-reload").setExecutor(new GravityReload(this, gravityExecutor));
+        Bukkit.getPluginCommand("gravity-show").setExecutor(new GravityShow(this));
 
         Bukkit.getPluginManager().registerEvents(new MainListenerHandler(this, gravityExecutor), this);
 

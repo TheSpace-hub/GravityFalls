@@ -6,3 +6,4 @@ depend: [ ]
 commands:
   gravity: { }
   gravity-reload: { }
+  gravity-show: { }
