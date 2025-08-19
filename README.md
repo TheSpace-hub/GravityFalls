@@ -26,9 +26,16 @@
 В разделе _worlds_ перечисляются миры, в которых установлена гравитация. Если мира нет, то гравитация отсутствует.
 
 ```yml
-no-perms: '&cТебе нужно право gravity.change!'
-gravity-changed: '&aГравитация в мире {world} изменена на {new_value}.'
-use: "&cИспользуй /gravity <сила от 0 до 10> [мир] для изменения гравитации."
+messages:
+  no-perms-to-change: '&cТебе нужно право gravity.change!'
+  no-perms-to-reload: '&cТебе нужно право gravity.reload!'
+  no-perms-to-show: '&cТебе нужно право gravity.show!'
+  gravity-changed: '&aГравитация в мире {world} изменена на {new_value}.'
+  gravity-reloaded: '&aКонфиг перезагружен.'
+  use-change: "&cИспользуй /gravity <сила от 0 до 10> [мир] для изменения гравитации."
+  use-reload: "&cИспользуй /gravity-reload для перезагрузки."
+  use-show: "&cИспользуй /gravity-show для отображения миров."
+  config-error: '&cНедопустимое значение {value} для мира {world} в config.yml!'
 worlds:
   example-world: 5
 ```
