@@ -4,9 +4,9 @@ plugins {
 
 group = 'hub.thespace'
 
-def mcVersion = findProperty('mcversion') ?: '1.18.2'
+def mcVersion = findProperty('mcVersion') ?: '1.18.2'
 
-version = mcVersion + '_0.1.3.1'
+version = mcVersion + '_0.1.3.2'
 
 repositories {
     mavenCentral()
