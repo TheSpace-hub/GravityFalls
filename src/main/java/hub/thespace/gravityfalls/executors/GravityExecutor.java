@@ -72,7 +72,6 @@ public class GravityExecutor implements Runnable {
      */
     public void updateEntity(LivingEntity entity) {
         entitiesAwaitingProcessing.add(entity);
-        plugin.getLogger().info("EAP: " + entitiesAwaitingProcessing);
     }
 
     /**
