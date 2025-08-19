@@ -14,7 +14,7 @@ public final class GravityFalls extends JavaPlugin {
         GravityExecutor gravityExecutor = new GravityExecutor(this);
         saveDefaultConfig();
 
-        new GravityReload(this, gravityExecutor).checkConfig();
+        gravityExecutor.checkConfig();
 
         Bukkit.getPluginCommand("gravity").setExecutor(new Gravity(this, gravityExecutor));
         Bukkit.getPluginCommand("gravity-reload").setExecutor(new GravityReload(this, gravityExecutor));

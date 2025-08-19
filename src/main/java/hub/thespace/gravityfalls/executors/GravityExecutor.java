@@ -117,4 +117,43 @@ public class GravityExecutor implements Runnable {
         entity.removePotionEffect(PotionEffectType.JUMP);
     }
 
+    /**
+     * Проверка значений в конфиге.
+     */
+    public void checkConfig() {
+        ConfigurationSection worlds = plugin.getConfig().getConfigurationSection("worlds");
+        for (World world : Bukkit.getWorlds())
+            if (worlds.contains(world.getName()))
+                checkWorldInConfig(world);
+    }
+
+    /**
+     * Проверка значений в конфиге для мира.
+     *
+     * @param world Мир.
+     */
+    private void checkWorldInConfig(World world) {
+        Object value = plugin.getConfig().getConfigurationSection("worlds").get(world.getName());
+        if (!(value instanceof Integer)) {
+            plugin.getConfig().getConfigurationSection("worlds").set(world.getName(), 1);
+            plugin.getLogger().severe(plugin.getConfig().getString("messages.config-error")
+                    .replace("&", "§")
+                    .replace("{value}", value.toString())
+                    .replace("{world}", world.getName()));
+            plugin.saveConfig();
+            return;
+        }
+        int gravity = (Integer) value;
+        if (10 < gravity || gravity < 0) {
+            plugin.getConfig().getConfigurationSection("worlds").set(world.getName(), 1);
+            plugin.getLogger().severe(plugin.getConfig().getString("messages.config-error")
+                    .replace("&", "§")
+                    .replace("{value}", value.toString())
+                    .replace("{world}", world.getName()));
+            plugin.saveConfig();
+        }
+
+
+    }
+
 }
