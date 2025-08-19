@@ -20,9 +20,9 @@ public class MainListenerHandler implements Listener {
     private Plugin plugin;
     private final GravityExecutor gravityExecutor;
 
-    public MainListenerHandler(Plugin plugin) {
+    public MainListenerHandler(Plugin plugin, GravityExecutor gravityExecutor) {
         this.plugin = plugin;
-        gravityExecutor = new GravityExecutor(plugin);
+        this.gravityExecutor = gravityExecutor;
     }
 
     @EventHandler
