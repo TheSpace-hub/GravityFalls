@@ -16,7 +16,7 @@ public final class GravityFalls extends JavaPlugin {
         Bukkit.getPluginCommand("gravity").setExecutor(new Gravity(this, gravityExecutor));
         Bukkit.getPluginManager().registerEvents(new MainListenerHandler(this, gravityExecutor), this);
 
-        Bukkit.getScheduler().runTaskTimer(this, gravityExecutor, 5, 5);
+        Bukkit.getScheduler().runTaskTimer(this, gravityExecutor, 1, 1);
     }
 
 }
