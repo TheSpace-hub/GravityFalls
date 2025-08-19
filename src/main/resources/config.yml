@@ -1,5 +1,5 @@
 messages:
-  no-perms: '&cТебе нужно право gravity.change!'
+  no-perms-to-change: '&cТебе нужно право gravity.change!'
   gravity-changed: '&aГравитация в мире {world} изменена на {new_value}.'
-  use: "&cИспользуй /gravity <сила от 0 до 10> [мир] для изменения гравитации."
+  use-change: "&cИспользуй /gravity <сила от 0 до 10> [мир] для изменения гравитации."
 worlds: { }

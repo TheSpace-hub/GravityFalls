@@ -25,13 +25,15 @@ public class Gravity implements CommandExecutor, TabExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (!commandSender.hasPermission("gravity.change")) {
-            commandSender.sendMessage(plugin.getConfig().getString("messages.no-perms").replace("&", "§"));
+            commandSender.sendMessage(plugin.getConfig().getString("messages.no-perms-to-change")
+                    .replace("&", "§"));
             return true;
         }
 
         Pair<Integer, World> arguments = getArguments(commandSender, strings);
         if (arguments == null) {
-            commandSender.sendMessage(plugin.getConfig().getString("messages.use").replace("&", "§"));
+            commandSender.sendMessage(plugin.getConfig().getString("messages.use-change")
+                    .replace("&", "§"));
             return true;
         }
 
