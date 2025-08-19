@@ -1,15 +1,14 @@
 package hub.thespace.gravityfalls.commands;
 
 import hub.thespace.gravityfalls.executors.GravityExecutor;
-import org.apache.commons.lang3.tuple.Pair;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Gravity implements CommandExecutor, TabExecutor {
@@ -25,23 +24,25 @@ public class Gravity implements CommandExecutor, TabExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (!commandSender.hasPermission("gravity.change")) {
-            commandSender.sendMessage(plugin.getConfig().getString("messages.no-perms-to-change")
+            commandSender.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.no-perms-to-change"))
                     .replace("&", "§"));
             return true;
         }
 
-        Pair<Integer, World> arguments = getArguments(commandSender, strings);
-        if (arguments == null) {
-            commandSender.sendMessage(plugin.getConfig().getString("messages.use-change")
+
+        if (getArguments(commandSender, strings) == null) {
+            commandSender.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.use-change"))
                     .replace("&", "§"));
             return true;
         }
+        int gravity = (int) Objects.requireNonNull(getArguments(commandSender, strings)).get(0);
+        World world = (World) Objects.requireNonNull(getArguments(commandSender, strings)).get(1);
 
-        gravityExecutor.changeGravity(arguments.getLeft(), arguments.getRight());
+        gravityExecutor.changeGravity(gravity, world);
 
-        commandSender.sendMessage(plugin.getConfig().getString("messages.gravity-changed")
-                .replace("{world}", arguments.getRight().getName())
-                .replace("{new_value}", arguments.getLeft().toString())
+        commandSender.sendMessage(Objects.requireNonNull(plugin.getConfig().getString("messages.gravity-changed"))
+                .replace("{world}", world.getName())
+                .replace("{new_value}", gravity + "")
                 .replace("&", "§"));
 
         return false;
@@ -55,7 +56,7 @@ public class Gravity implements CommandExecutor, TabExecutor {
                     return List.of("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
                 case 2:
                     return Bukkit.getWorlds().stream()
-                            .map(world -> world.getName())
+                            .map(World::getName)
                             .collect(Collectors.toList());
             }
         return List.of();
@@ -68,8 +69,7 @@ public class Gravity implements CommandExecutor, TabExecutor {
      * @param strings Переданные аргументы.
      * @return Пара из гравитации и мира.
      */
-    @Nullable
-    private Pair<Integer, World> getArguments(CommandSender sender, String[] strings) {
+    private List<Object> getArguments(CommandSender sender, String[] strings) {
         if (1 > strings.length || strings.length > 2) return null;
         if (sender instanceof ConsoleCommandSender && strings.length == 1) return null;
 
@@ -85,7 +85,7 @@ public class Gravity implements CommandExecutor, TabExecutor {
             if (world == null) return null;
         }
 
-        return Pair.of(value, world);
+        return List.of(value, world);
     }
 
 }
