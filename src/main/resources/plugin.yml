@@ -5,3 +5,4 @@ loadbefore: [ ]
 depend: [ ]
 commands:
   gravity: { }
+  gravity-reload: { }
