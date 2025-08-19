@@ -1,13 +1,10 @@
 package hub.thespace.gravityfalls.commands;
 
 import hub.thespace.gravityfalls.executors.GravityExecutor;
-import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.Plugin;
 
 import java.util.List;
